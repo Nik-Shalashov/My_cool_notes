@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">My cool notes</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_note_button">+</string>
+    <string name="new_note_textView">Новая заметка</string>
+    <string name="description_field">Введи сюда свою заметку</string>
+    <string name="name_field">Введи название заметки</string>
+    <string name="date_field">Введи дату</string>
+    <string name="save_note_button">Сохранить заметку</string>
 </resources>
