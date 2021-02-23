@@ -7,4 +7,10 @@
     <string name="name_field">Введи название заметки</string>
     <string name="date_field">Введи дату</string>
     <string name="save_note_button">Сохранить заметку</string>
+    <string name="search_button">Поиск</string>
+    <string name="add_note_button">Новая заметка</string>
+    <string name="settings_button">Настройки</string>
+    <string name="info">О приложении</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
