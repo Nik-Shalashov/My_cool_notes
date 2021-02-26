@@ -1,6 +1,5 @@
 package ru.android1.mycoolnotes;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -36,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.layout_container, fragment);
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }
     }
@@ -56,16 +56,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Обработка навигационного меню
         NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                if (navigateFragment(id)) {
-                    drawer.closeDrawer(GravityCompat.START);
-                    return true;
-                }
-                return false;
+        navigationView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (navigateFragment(id)) {
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
             }
+            return false;
         });
 
     }
@@ -85,11 +82,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @SuppressLint("NonConstantResourceId")
     private boolean navigateFragment(int id) {
         switch (id) {
             case R.id.info:
-                //TODO
-                return true;
 
             case R.id.menu_settings:
                 //TODO
@@ -117,21 +113,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
         MenuItem addNote = menu.findItem(R.id.create_button);
-        addNote.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                NoteDescriptionFragment fragment = NoteDescriptionFragment.newInstance(null);
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                if (isLandscapeOrientation) {
-                    fragmentTransaction.replace(R.id.layout_container_land, fragment);
-                } else {
-                    fragmentTransaction.replace(R.id.layout_container, fragment);
-                }
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-                return true;
+        addNote.setOnMenuItemClickListener(item -> {
+            NoteDescriptionFragment fragment = NoteDescriptionFragment.newInstance(null);
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            if (isLandscapeOrientation) {
+                fragmentTransaction.replace(R.id.layout_container_land, fragment);
+            } else {
+                fragmentTransaction.replace(R.id.layout_container, fragment);
             }
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+            return true;
         });
         return true;
     }
