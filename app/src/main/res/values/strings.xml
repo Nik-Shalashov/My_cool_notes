@@ -13,4 +13,7 @@
     <string name="info">О приложении</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="item">item</string>
+    <string name="note_name">note name</string>
+    <string name="data">data</string>
 </resources>
