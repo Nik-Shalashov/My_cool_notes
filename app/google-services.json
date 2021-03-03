@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "306441259763",
+    "project_id": "my-cool-notes",
+    "storage_bucket": "my-cool-notes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306441259763:android:72c2d2fc8c44550f508586",
+        "android_client_info": {
+          "package_name": "ru.android1.mycoolnotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "306441259763-92in0b85imtugm1o4pcfa1c2qlo8srlj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCq4X3DGtxTOCFqRt6iPqch99sBp9w4Xvw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "306441259763-92in0b85imtugm1o4pcfa1c2qlo8srlj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
