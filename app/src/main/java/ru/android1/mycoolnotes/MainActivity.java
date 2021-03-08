@@ -18,6 +18,9 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+import ru.android1.mycoolnotes.note_description.NoteDescriptionFragment;
+import ru.android1.mycoolnotes.notes.NotesFragment;
+
 public class MainActivity extends AppCompatActivity {
 
     private boolean isLandscapeOrientation;
