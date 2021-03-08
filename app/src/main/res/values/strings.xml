@@ -16,4 +16,5 @@
     <string name="item">item</string>
     <string name="note_name">note name</string>
     <string name="data">data</string>
+    <string name="delete_popup">удалить</string>
 </resources>

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/textView"
+    android:id="@+id/CardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="15dp"
     app:cardElevation="3dp">
 
     <LinearLayout
-        android:id="@+id/note_review"
+        android:id="@+id/linL_item_note_review"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/cardview_light_background"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/tv_item_note_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/note_name"
@@ -23,7 +23,7 @@
             android:textColor="@color/purple_500" />
 
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/tv_item_note_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/data"
