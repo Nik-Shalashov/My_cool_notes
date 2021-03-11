@@ -1,14 +1,18 @@
 package ru.android1.mycoolnotes.notes;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -16,8 +20,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import ru.android1.mycoolnotes.NoteModel;
 import ru.android1.mycoolnotes.adapter.NotesAdapter;
 import ru.android1.mycoolnotes.R;
@@ -72,7 +78,6 @@ public class NotesFragment extends Fragment implements NotesFirestoreCallbacks {
         DividerItemDecoration itemDecoration = new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL);
         itemDecoration.setDrawable(getResources().getDrawable(R.drawable.separator, null));
         recyclerView.addItemDecoration(itemDecoration);
-
         adapter.SetOnItemClickListener((view, position) -> checkOrientation(notes.get(position)));
     }
 
@@ -86,11 +91,13 @@ public class NotesFragment extends Fragment implements NotesFirestoreCallbacks {
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
-        int position = adapter.getMenuPosition();
         if (item.getItemId() == R.id.action_delete) {
-            NoteModel note = notes.get(position);
-            repository.onDeleteClicked(note.getId());
-            adapter.notifyItemRemoved(position);
+            new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showAlertDialog();
+                }
+            };
             return true;
         }
         return super.onContextItemSelected(item);
@@ -136,5 +143,29 @@ public class NotesFragment extends Fragment implements NotesFirestoreCallbacks {
         if (message != null) {
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void showAlertDialog() {
+        new AlertDialog.Builder(requireContext())
+                .setTitle(R.string.note_fragment_alert_title)
+                .setMessage(R.string.note_fragment_alert_message)
+                .setCancelable(false)
+                .setPositiveButton(R.string.note_fragment_alert_button_positive, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        int position = adapter.getMenuPosition();
+                        NoteModel note = notes.get(position);
+                        repository.onDeleteClicked(note.getId());
+                        adapter.notifyItemRemoved(position);
+                    }
+                })
+                .setNegativeButton(R.string.note_fragment_alert_button_negative, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        getActivity().onBackPressed();
+                    }
+                })
+                .create()
+                .show();
     }
 }
