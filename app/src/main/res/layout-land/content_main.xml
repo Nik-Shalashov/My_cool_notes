@@ -10,7 +10,7 @@
     tools:showIn="@layout/app_bar_main">
 
 
-    <fragment android:name="ru.android1.mycoolnotes.NotesFragment"
+    <fragment android:name="ru.android1.mycoolnotes.notes.NotesFragment"
         android:id="@+id/cities"
         android:layout_weight="1"
         android:layout_width="0px"

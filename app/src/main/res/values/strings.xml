@@ -16,4 +16,9 @@
     <string name="item">item</string>
     <string name="note_name">note name</string>
     <string name="data">data</string>
+    <string name="delete_popup">Удалить</string>
+    <string name="note_fragment_alert_title">Предупреждение</string>
+    <string name="note_fragment_alert_message">Точно хочешь удалить?</string>
+    <string name="note_fragment_alert_button_positive">Удалить</string>
+    <string name="note_fragment_alert_button_negative">Нет</string>
 </resources>
