@@ -78,7 +78,7 @@ public class NotesFragment extends Fragment implements NotesFirestoreCallbacks {
         DividerItemDecoration itemDecoration = new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL);
         itemDecoration.setDrawable(getResources().getDrawable(R.drawable.separator, null));
         recyclerView.addItemDecoration(itemDecoration);
-        adapter.SetOnItemClickListener((view, position) -> checkOrientation(notes.get(position)));
+        adapter.setOnItemClickListener((view, position) -> checkOrientation(notes.get(position)));
     }
 
 
