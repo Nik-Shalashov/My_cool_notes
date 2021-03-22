@@ -15,7 +15,7 @@ import java.util.List;
 import ru.android1.mycoolnotes.NoteModel;
 import ru.android1.mycoolnotes.R;
 
-public class NotesAdapter extends RecyclerView.Adapter<ViewHolder> {
+public class NotesAdapter extends RecyclerView.Adapter<NotesViewHolder> {
     private final ArrayList<NoteModel> notes;
     private OnItemClickListener itemClickListener;
     private final Fragment fragment;
@@ -34,14 +34,14 @@ public class NotesAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public NotesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
-        return new ViewHolder(v);
+        return new NotesViewHolder(v);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NotesViewHolder holder, int position) {
         holder.onBind(notes.get(position));
     }
 
@@ -50,7 +50,7 @@ public class NotesAdapter extends RecyclerView.Adapter<ViewHolder> {
         return notes.size();
     }
 
-    public void SetOnItemClickListener(OnItemClickListener itemClickListener){
+    public void setOnItemClickListener(OnItemClickListener itemClickListener){
         this.itemClickListener = itemClickListener;
     }
 
